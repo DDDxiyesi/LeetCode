@@ -1,5 +1,4 @@
 
-
 public class Solution {
     public boolean containsDuplicate(int[] nums) {
        
@@ -15,5 +14,43 @@ public class Solution {
                 hm.put(nums[i],1);
         }
         return false;
+    }
+}
+
+
+
+
+public class Solution {
+    public boolean containsDuplicate(int[] nums) {
+       
+        if (nums.length<2) 
+        { 
+            return false; 
+            
+        } 
+        else 
+        { 
+            int i,j=0; Arrays.sort(nums); 
+            for (i=0;i<(nums.length-1);i++) 
+            { 
+                if (nums[i]==nums[i+1]) 
+                { 
+                    j=1; 
+                    break; 
+                    
+                } 
+                
+            } 
+            if (j==1) 
+            { 
+                return true; 
+                
+            } 
+            else 
+            { 
+                return false; 
+                
+            }
+        }
     }
 }

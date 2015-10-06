@@ -1,0 +1,12 @@
+//Base is A-26;
+// 100 is pow(10,2); length =3;
+public class Solution {
+    public int titleToNumber(String s) {
+        int column = 0;
+        for (int i =0 ; i<s.length() ; i++)
+        {
+            column += (int)(s.charAt(i)-'A'+1)*Math.pow(26,s.length()-i-1);
+        }
+        return column;
+    }
+}

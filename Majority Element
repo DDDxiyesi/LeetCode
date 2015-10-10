@@ -1,0 +1,30 @@
+//HashMap
+public class Solution {
+    public int majorityElement(int[] nums) {
+        HashMap<Integer, Integer> dict = new HashMap<Integer, Integer>();
+        for (int i : nums)
+        {
+            if(!dict.containsKey(i))
+            {
+                dict.put(i,1);
+            }
+            else
+            {
+                int k = dict.get(i);
+                k++;
+                dict.put(i,k);
+            }
+        }
+        int max = 0;
+        int maxi = 0;
+        for (int i : dict.keySet())
+        {
+            if(dict.get(i)>max)
+            {
+                max = dict.get(i);
+                maxi = i;
+            }
+        }
+        return maxi;
+    }
+}

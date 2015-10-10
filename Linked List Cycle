@@ -1,0 +1,30 @@
+// Make ListNode point to itself after traverse.
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if (head == null)
+            return false;
+        ListNode temp = head;
+        while(temp.next!=temp)
+        {
+            if(temp.next == null)
+                return false;
+            temp = head.next;
+            head.next = head;
+            head = temp;
+            
+            
+        }
+        return true;
+    }
+}

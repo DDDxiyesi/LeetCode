@@ -1,0 +1,30 @@
+//Recursion
+public class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null||head.next==null)
+            return head;
+        head.next = deleteDuplicates(head.next);
+        if(head.next.val == head.val){
+            return head.next;
+        }
+        else
+            return head;
+    }
+}
+
+// while(head.next.val == head.val)
+public class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null||head.next==null)
+            return head;
+        ListNode result = head;
+        while(head!=null){
+            while(head.next!=null && head.next.val==head.val){
+                head.next = head.next.next;
+                
+            }
+            head = head.next;
+        }
+        return result;
+    }
+}

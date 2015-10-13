@@ -1,3 +1,16 @@
+//SUM
+public class Solution {
+    public int missingNumber(int[] nums) {
+       int len = nums.length;
+       int sum = (0+len)*(len+1)/2;
+       for(int i : nums){
+           sum-=i;
+       }
+       return sum;
+    }
+}
+
+//HASHMAP
 public class Solution {
     public int missingNumber(int[] nums) {
        HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>();

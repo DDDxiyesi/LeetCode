@@ -1,0 +1,39 @@
+//root = mid ; recursive left & right.
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if(nums.length < 1){
+            return null;
+        }
+        if(nums.length < 2){
+            TreeNode root = new TreeNode(nums[0]);
+            return root;
+        }
+        int mid = nums[nums.length/2];
+        int[] left = new int[nums.length/2];
+        int[] right = new int[nums.length - nums.length/2 - 1 ];
+        for(int i = 0; i< left.length ; i++){
+            left[i] = nums[i];
+        }
+        TreeNode root = new TreeNode(mid);
+        TreeNode leftnode = sortedArrayToBST(left);
+        root.left = leftnode;
+        if(nums.length>2){
+        for(int i = 0; i< right.length ; i++){
+            right[i] = nums[i+left.length+1];
+        }
+
+        TreeNode rightnode = sortedArrayToBST(right);
+        root.right = rightnode;
+        }
+        return root;
+    }
+}

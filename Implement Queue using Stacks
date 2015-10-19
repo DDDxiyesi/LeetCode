@@ -1,0 +1,32 @@
+//two stack
+class MyQueue {
+    
+    Stack<Integer> st = new Stack();
+    Stack<Integer> temp = new Stack();
+    
+    // Push element x to the back of queue.
+    public void push(int x) {
+        st.push(x);
+    }
+
+    // Removes the element from in front of queue.
+    public void pop() {
+        peek();
+        temp.pop();
+    }
+
+    // Get the front element.
+    public int peek() {
+       if(temp.empty()){
+            while(!st.empty()){
+                temp.push(st.pop());
+            }
+       }
+       return temp.peek();
+    }
+
+    // Return whether the queue is empty.
+    public boolean empty() {
+        return st.empty()&&temp.empty();
+    }
+}

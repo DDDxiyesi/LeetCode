@@ -1,0 +1,21 @@
+public class Solution {
+    public List<Integer> grayCode(int n) {
+        List<Integer> list = new ArrayList<Integer>();
+        if(n == 0)
+           return new ArrayList<Integer>(Arrays.asList(0));
+        if(n==1){
+            list.add(0);
+            list.add(1);
+            return list;
+        }
+        else{
+            int k = 1<<(n-1);
+            list = grayCode(n-1);
+            for(int i = list.size()-1 ; i>=0 ; i--){
+                list.add(list.get(i) | k);
+            }
+            
+        }
+        return list;
+    }
+}

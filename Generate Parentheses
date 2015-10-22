@@ -1,0 +1,21 @@
+public class Solution {
+    public List<String> generateParenthesis(int n) {
+        ArrayList<String> list = new ArrayList<String>();
+        backtracking(list,0,0,"",n);
+        return list;
+    }
+    
+    public void backtracking(List list, int left, int right, String str, int max){
+        if(str.length() == max*2){
+            list.add(str);
+            return;
+        }
+        if(left < max){
+            backtracking(list,left+1,right,str+"(",max);
+            
+        }
+        if(right < left){
+            backtracking(list,left,right+1,str+")",max);
+        }
+    }
+}

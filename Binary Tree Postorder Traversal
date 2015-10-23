@@ -1,0 +1,30 @@
+//Recursion
+public class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        if(root == null)
+            return new ArrayList<Integer>();
+        list.addAll(postorderTraversal(root.left));
+        list.addAll(postorderTraversal(root.right));
+        list.add(root.val);
+        return list;
+    }
+}
+
+//Iteration
+public class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        LinkedList<Integer> list = new LinkedList<Integer>();
+        Stack<TreeNode> leftstack = new Stack<TreeNode>();
+        while(root!=null){
+            list.addFirst(root.val);
+            if(root.left!=null)
+                leftstack.push(root.left);
+            root = root.right;
+            if(root==null&& !leftstack.isEmpty()){
+                root = leftstack.pop();  
+            }
+        }
+        return list;
+    }
+}

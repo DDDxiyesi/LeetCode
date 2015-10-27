@@ -1,0 +1,21 @@
+public class Solution {
+    public boolean isBalanced(TreeNode root) {
+        if(root==null){
+            return true;
+        }
+        else{
+            int leftheight = countHeight( root.left);
+            int rightheight = countHeight(root.right);
+            if(Math.abs(leftheight-rightheight)<=1&&isBalanced(root.left)&&isBalanced(root.right))
+                return true;
+            else
+                return false;
+        }
+        
+    }
+    private int countHeight(TreeNode root){
+        if(root == null)
+            return 0;
+        return Math.max(countHeight(root.left),countHeight(root.right))+1;
+    }
+}

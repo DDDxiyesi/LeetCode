@@ -1,0 +1,12 @@
+//In place two pointers
+public class Solution {
+    public int removeElement(int[] nums, int val) {
+        int index = nums.length;
+        for(int i=0; i<index; i++){
+            while(nums[i]==val && i<index){
+                nums[i]= nums[--index];
+            }
+        }
+        return index;
+    }
+}

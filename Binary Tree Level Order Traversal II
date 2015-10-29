@@ -1,0 +1,32 @@
+public class Solution {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List result = new ArrayList<ArrayList<Integer>>();
+        Stack<ArrayList<Integer>> stack = new Stack<>();
+        ArrayList<TreeNode> list1 = new ArrayList<>();
+         
+        if(root == null)
+            return result;
+        list1.add(root);
+        while(list1.size()>0){
+            ArrayList<Integer> templist = new ArrayList<>();
+            ArrayList<TreeNode> list2 = new ArrayList<>();
+            for(TreeNode node : list1){
+                templist.add(node.val);
+            }
+            stack.push(templist);
+            for(TreeNode node: list1){
+                if(node.left!=null){
+                    list2.add(node.left);
+                }
+                if(node.right!=null){
+                    list2.add(node.right);
+                }
+            }
+            list1 = list2;
+        }
+        while(stack.size()>0){
+            result.add(stack.pop());
+        }
+        return result;
+    }
+}

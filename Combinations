@@ -1,0 +1,19 @@
+public class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> list = new ArrayList<List<Integer>>();
+        comb(list, new ArrayList<Integer>(), 1, n, k);
+        return list;
+    }
+    private void comb(List<List<Integer>> list, List<Integer> comb, int start, int n, int size){
+        if(size==0){
+            list.add(new ArrayList<Integer>(comb));
+            return;
+        }
+        for(int i = start; i<=n; i++){
+            comb.add(i);
+            comb(list,comb,i+1,n,size-1);
+            comb.remove(comb.size()-1);
+        }
+        
+    }
+}
